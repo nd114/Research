@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure proper font rendering */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb;
+    color: #111827;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Prevent text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Ensure proper text rendering in editor */
+.editor-content {
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    z-index: 50;
+    transition: left 0.3s ease-in-out;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .main-content {
+    width: 100%;
+  }
+}
+  
+  .notion-editor blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-3;
+  }
+  
+  .notion-editor code {
+    @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+  }
+  
+  .notion-editor pre {
+    @apply bg-gray-100 p-4 rounded-lg overflow-x-auto mb-3;
+  }
+
+/* Split view styles */
+.split-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.split-container .resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #e5e7eb;
+  cursor: col-resize;
+  z-index: 10;
+}
+
+.split-container .resize-handle:hover {
+  background: #3b82f6;
+}
+
+/* Browser iframe styles */
+iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Prevent text selection during resize */
+.split-container.dragging * {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Improved iframe styles */
+iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Focus mode styles */
+.focus-mode {
+  background: #f8fafc;
+}
+
+.focus-mode .sidebar {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.focus-mode .sidebar:hover {
+  opacity: 1;
+}
+
+/* Research mode specific styles */
+.research-mode {
+  background: #fafbfc;
+}
+
+.research-mode .notes-panel {
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.research-mode .browser-panel {
+  background: #f8f9fa;
+  border-left: 1px solid #e9ecef;
+}
